@@ -1,0 +1,394 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contact &mdash; Get in touch with us</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
+    <link rel="stylesheet" href="{% static 'index/fonts/icomoon/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'index/images/img_1.jpg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'index/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/animate.css' %}">
+    
+    
+    <link rel="stylesheet" href="{% static 'index/fonts/flaticon/font/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/fl-bigmug-line.css' %}">
+  
+    <link rel="stylesheet" href="{% static 'index/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'index/css/style.css' %}">
+    
+  </head>
+  <body>
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    
+    <header class="site-navbar py-1" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <div class="col-6 col-xl-2">
+            <h1 class="mb-0"><a href="{% url 'home' %}" class="text-black h2 mb-0">In<strong style="font-style: italic">touch</strong></a></h1>
+          </div>
+
+          <div class="col-10 col-xl-10 d-none d-xl-block">
+            <nav class="site-navigation text-right" role="navigation">
+
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li class="has-children">
+                  <a href="category.html">Category</a>
+                  <ul class="dropdown">
+                    <li><a href="blog/results">Survey results</a></li>
+                    <li><a href="blog/Fitness">Physical fitness</a></li>
+                    <li><a href="blog/Love">Love, Relationship and Mariage</a></li>
+                    <li><a href="blog/Foods">Foods and Health</a></li>
+                    <li><a href="blog/Technology">Technology and Hacks</a></li>
+                  </ul>
+                </li>
+                <li class="has-children">
+                  <a href="{% url 'blog' %}">Blog</a>
+                  <ul class="dropdown">
+                    <li><a href="{% url 'blog' %}">All</a></li>
+                    <li><a href="blog/Education">Education</a></li>
+                    <li><a href="blog/Entertainment">Entertainment</a></li>
+                    <li><a href="blog/Sports">Sports</a></li>
+                    <li><a href="blog/Technology">Technology</a></li>
+                    <li><a href="blog/Religion">Religion</a></li>
+                    <li><a href="blog/Politics">Politics</a></li>
+                    <li><a href="blog/Gossips">Gossips</a></li>
+                  </ul>
+                </li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_superuser %}
+                  <li><a href="{% url 'survey_topics' %}">Survey Topics</a></li>
+                {% endif %}
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                {% if user.is_superuser %}
+                  <li><a href="/admin"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> {{user.username}}</span></a></li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+
+          <div class="col-6 col-xl-2 text-right d-block">
+            
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      </div>
+      
+    </header>
+
+    <div class="unit-5 overlay" style="background-image: url({% static 'index/images/hero_bg_2.jpg' %});">
+      <div class="container text-center">
+        <h2 class="mb-0">Contact</h2>
+        <p class="mb-0 unit-6"><a href="{% url 'home' %}">Home</a> <span class="sep">></span> <span>Contact</span></p>
+      </div>
+    </div>
+
+    
+    
+
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+       
+          <div class="col-md-12 col-lg-8 mb-5">
+          
+            
+          
+            <div action="" class="p-5 bg-white">
+
+              {% comment %} <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" for="fullname">Full Name</label>
+                  <input type="text" id="fullname" class="form-control" placeholder="Full Name">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="font-weight-bold" for="email">Email</label>
+                  <input type="email" id="email" class="form-control" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="font-weight-bold" for="email">Subject</label>
+                  <input type="text" id="subject" class="form-control" placeholder="Enter Subject">
+                </div>
+              </div> {% endcomment %}
+              
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="font-weight-bold" for="message">Message</label> 
+                  <textarea name="message" onkeyup="messageControl()" id="message" cols="30" rows="5" class="form-control" placeholder="Say hello to us >> Note that this message will be sent through WhatsApp"></textarea>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <a class="btn btn-primary  py-2 px-4 text-white" id="link">Send Message</a>
+                </div>
+              </div>
+
+  
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="p-4 mb-3 bg-white">
+              <h3 class="h5 text-black mb-3">Contact Info</h3>
+              <p class="mb-0 font-weight-bold">Address</p>
+              <p class="mb-4">B122 Jaja Hall, University of Lagos, Akoka, Yaba, Lagos, Nigeria</p>
+
+              <p class="mb-0 font-weight-bold">Phone</p>
+              <p class="mb-4"><a href="#">+234 831 615 393 </a></p>
+
+              <p class="mb-0 font-weight-bold">Email Address</p>
+              <p class="mb-0"><a href="#">info@intouch.com</a></p>
+
+            </div>
+            
+            {% comment %} <div class="p-4 mb-3 bg-white">
+              <h3 class="h5 text-black mb-3">More Info</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur</p>
+              <p><a href="#" class="btn btn-primary  py-2 px-4 rounded-0">Learn More</a></p>
+            </div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-6" data-aos="fade" >
+            <h2>Frequently Ask Questions</h2>
+          </div>
+        </div>
+        
+
+        <div class="row justify-content-center" data-aos="fade" data-aos-delay="100">
+          <div class="col-md-8">
+            <div class="accordion unit-8" id="accordion">
+            <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">Do you store anybody's information for partaking in any survey<span class="icon"></span></a>
+              </h3>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>The answer is No!. We do not require anyone to enter his/her personal information. So, surveys are being submitted by Anonymous users</p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+            
+            <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">How do i benefit from your company<span class="icon"></span></a>
+              </h3>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>There will be a lot of events like giveaways, free training on fitness, cooking and so on</p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+            <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">Do I need to register?  <span class="icon"></span></a>
+              </h3>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>For now No!. We don't allow our users to register now, but that will possibe soon</p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+            <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">Do you employ in your company?<span class="icon"></span></a>
+              </h3>
+              <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>Yes!. We employ writers, developers and others. For more information on employment and available positions, you can check the vacancy section in the <a href="{% url 'home' %}">home page</a></p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+          </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="py-5 bg-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-white h4 font-weihgt-normal mb-4">Subscribe Newsletter</h2>
+          </div>
+        </div>
+        <form action="" class="row">
+          <div class="col-md-9">
+            <input type="text" class="form-control border-0 mb-3 mb-md-0" placeholder="Enter Your Email">
+          </div>
+          <div class="col-md-3">
+            <input type="submit" value="Send" class="btn btn-dark btn-block" style="height: 45px;">  
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        
+
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="row">
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Blog Category</h3>
+                <ul class="list-unstyled">
+                  <li><a href="blog/Education">Education</a></li>
+                  <li><a href="blog/Entertainment">Entertainment</a></li>
+                  <li><a href="blog/Business">Business</a></li>
+                  <li><a href="blog/Gossips">Gossips</a></li>
+                  <li><a href="blog/Technology">Technology</a></li>
+                  <li><a href="blog/Sports">Sports</a></li>
+                  <li><a href="blog/Religion">Religion</a></li>
+                  <li><a href="blog/Politics">Politics</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Training and  others</h3>
+                <ul class="list-unstyled">
+                  <li><a href="blog/Foods">Foods and Nutrient</a></li>
+                  <li><a href="blog/Health">Health</a></li>
+                  <li><a href="blog/Fitness">Fitness</a></li>
+                  <li><a href="blog/Love">Love &amp; Relationship</a></li>
+                  <li><a href="blog/Career">Careers guide</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Archives</h3>
+                <ul class="list-unstyled">
+                  <li><a href="#">January 2018</a></li>
+                  <li><a href="#">February 2018</a></li>
+                  <li><a href="#">March 2018</a></li>
+                  <li><a href="#">April 2018</a></li>
+                  <li><a href="#">May 2018</a></li>
+                  <li><a href="#">June 2918</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Company</h3>
+                <ul class="list-unstyled">
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="#">Team</a></li>
+                  <li><a href="#">Terms &amp; Policies</a></li>
+                  <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <h3 class="footer-heading mb-4">Contact Info</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="d-block text-white">Address</span>
+                B122 Jaja Hall, University of Lagos, Akoka, Yaba, Lagos, Nigeria
+              </li>
+              <li>
+                <span class="d-block text-white">Telephone</span>
+                +234 813 161 5393
+              </li>
+              <li><a href="https://wa.me/+2348231615393/?text=Hello%20Intouch">Send Us WhatsApp message</a></li>
+              <li>
+                <span class="d-block text-white">WhatsApp</span>
+                  +234 813 161 5393
+              </li>
+              <li>
+                <span class="d-block text-white">Email</span>
+                info@intouch.com
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{% static 'index/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'index/js/popper.min.js' %}"></script>
+  <script src="{% static 'index/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'index/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'index/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'index/js/aos.js' %}"></script>
+  <script src="{% static 'index/js/main.js' %}"></script>
+
+  <script type="text/javascript">
+    var text;
+    var link;
+    link.href = "https://wa.me/+2348131615393/?text="+text.value;
+    
+    function messageControl(){ // function to get the input text to send a whatsapp message
+      text = document.getElementById('message');
+      link = document.getElementById('link');
+      link.href = "https://wa.me/+2348131615393/?text="+text.value; // concatenating the link with the message
+    }
+  </script>
+    
+  </body>
+</html>
