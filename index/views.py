@@ -8,6 +8,7 @@ from .models import HomeViewCount
 
 
 def home(request):
+    technologies_post = Blog.objects.filter(category='Technology')
     forms = None
     message = None
     viewsCount, create = HomeViewCount.objects.get_or_create(id=1)
@@ -38,7 +39,7 @@ def home(request):
     formControl = FormControl.objects.all()
     for field in formControl:
         question = field.question
-    posts = Blog.objects.all()
+    posts = Blog.objects.filter(approved=True)
     events = Event.objects.all()
     vacancies = Vacancy.objects.all()
 
@@ -63,13 +64,15 @@ def home(request):
         'forms': forms,
         'current': question,
         'giveaway': giveAway,
-        'message': message
+        'message': message,
+        'technologies': technologies_post
     }
     return render(request, 'index/home.html', context)
 
 
 def contact(request):
     return render(request, 'index/contact.html')
+
 
 def about(request):
     return render(request, 'index/about.html')

@@ -40,28 +40,30 @@
     </div> <!-- .site-mobile-menu -->
     
     
-    <header class="site-navbar py-1" role="banner">
+    <header class="site-navbar py-1" role="banner" style="position: fixed; background-color: white">
 
       <div class="container">
         <div class="row align-items-center">
           
           <div class="col-6 col-xl-2">
-            <h1 class="mb-0"><a href="{% url 'home' %}" class="text-black h2 mb-0">In<strong style="font-style: italic">touch</strong></a></h1>
+            <h1 class="mb-0"><a href="{% url 'home' %}" class="text-black h2 mb-0"><img height="50px" width="100%" src="{% static 'index/images/logo.png' %}"></a></h1>
           </div>
 
           <div class="col-10 col-xl-10 d-none d-xl-block">
             <nav class="site-navigation text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="has-children">
-                  <a href="category.html">Category</a>
+                  <a href="">Category</a>
                   <ul class="dropdown">
                     <li><a href="blog/results">Survey results</a></li>
                     <li><a href="blog/Fitness">Physical fitness</a></li>
                     <li><a href="blog/Love">Love, Relationship and Mariage</a></li>
                     <li><a href="blog/Foods">Foods and Health</a></li>
                     <li><a href="blog/Technology">Technology and Hacks</a></li>
+                    <li><a href="blog/Career">Careers</a></li>
+                    <li><a href="blog/enterpreneur">Enterpreneur</a></li>
                   </ul>
                 </li>
                 <li class="has-children">
@@ -81,7 +83,7 @@
                 {% if user.is_superuser %}
                   <li><a href="{% url 'survey_topics' %}">Survey Topics</a></li>
                 {% endif %}
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a class="active" href="{% url 'contact' %}">Contact</a></li>
                 {% if user.is_superuser %}
                   <li><a href="/admin"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> {{user.username}}</span></a></li>
                 {% endif %}
@@ -101,7 +103,7 @@
     </header>
 
     <div class="unit-5 overlay" style="background-image: url({% static 'index/images/hero_bg_2.jpg' %});">
-      <div class="container text-center">
+      <div class="container text-center mt-5">
         <h2 class="mb-0">Contact</h2>
         <p class="mb-0 unit-6"><a href="{% url 'home' %}">Home</a> <span class="sep">></span> <span>Contact</span></p>
       </div>
