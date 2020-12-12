@@ -132,7 +132,7 @@
           <div class="col-md-12 col-lg-8 mb-5">
           
           
-            <form action="" class="p-5 bg-white"  method="POST" enctype="form-data/multipart">
+            <form action="" class="p-5 bg-white" method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               {% comment %} {% for field in form %} {% endcomment %}
               <div class="row form-group">
@@ -174,7 +174,7 @@
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="Send" class="btn btn-primary  py-2 px-4">
+                  <button type="submit" value="Send" class="btn btn-primary  py-2 px-4">Submit</button>
                 </div>
               </div>
               {% comment %} {% endfor %} {% endcomment %}
@@ -278,10 +278,10 @@
               <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
                 <h3 class="footer-heading mb-4">Company</h3>
                 <ul class="list-unstyled">
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Team</a></li>
-                  <li><a href="#">Terms &amp; Policies</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'about' %}">Team</a></li>
+                  <li><a href="{% url 'about' %}">Terms &amp; Policies</a></li>
+                  <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
               </div>
             </div>
@@ -297,6 +297,7 @@
                 <span class="d-block text-white">Telephone</span>
                 +1 232 305 3930
               </li>
+              <li><a href="https://facebook.com/InTouch-Media-and-Survey-104972581465970">Connect with us on facebook</a></li>
               <li>
                 <span class="d-block text-white">Email</span>
                 info@yourdomain.com

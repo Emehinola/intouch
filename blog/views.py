@@ -3,6 +3,7 @@ from .models import Blog
 from events.models import Event
 from events.forms import *
 from . forms import PostForm
+from django.http import Http404, HttpResponseNotFound
 
 # Create your views here.
 
@@ -22,13 +23,20 @@ all_surveys = [
 
 def details(request, title):
     formatted_title = str(title.replace('%20', ' '))
-    single_blog = Blog.objects.get(title=formatted_title, approved=True)
+    try:
+        single_blog = Blog.objects.get(title=formatted_title, approved=True)
+    except Blog.DoesNotExist:
+        # returning a page not found error
+        return HttpResponseNotFound('<center><h2 style="color: red">Blog not found</h2> <br> <a href="/blog">Back</a></center>')
+
     events = Event.objects.all()
+    technologies = Blog.objects.filter(category='Technology')
 
     context = {
         'details': single_blog,
         'events': events,
-        'formatted_title': formatted_title
+        'formatted_title': formatted_title,
+        'technologies': technologies
     }
 
     return render(request, 'blog/details.html', context)
@@ -62,7 +70,7 @@ def create_post(request):
         form = PostForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             form.save()
-            return redirect('create_post/')
+            return redirect('blog')
         else:
             pass
     else:

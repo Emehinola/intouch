@@ -39,7 +39,7 @@ def home(request):
     formControl = FormControl.objects.all()
     for field in formControl:
         question = field.question
-    posts = Blog.objects.filter(approved=True)
+    posts = Blog.objects.filter(approved=True)[:5]
     events = Event.objects.all()
     vacancies = Vacancy.objects.all()
 

@@ -25,6 +25,22 @@
     <link rel="stylesheet" href="{% static 'index/css/aos.css' %}">
 
     <link rel="stylesheet" href="{% static 'index/css/style.css' %}">
+
+    <style type="text/css" rel="stylesheet">
+      .rounded{
+        height: 400px;
+        width: 100%;
+      }
+
+      @media only screen and (max-width: 769px){
+
+        .rounded{
+          margin-top: 70px;
+          height: 250px;
+          width: 100%;
+        }
+      }
+    </style>
     
   </head>
   <body>
@@ -103,7 +119,7 @@
       
     </header>
 
-    <div class="unit-5 overlay" style="background-image: url({% static 'index/images/hero_bg_2.jpg' %});">
+    <div class="unit-5 overlay d-none d-lg-block d-md-block" style="background-image: url({% static 'index/images/hero_bg_2.jpg' %});">
       <div class="container text-center mt-5">
         <h2 class="mb-0">{{details.title}}</h2>
         <p class="mb-0 unit-6"><a href="{% url 'home' %}">Home</a> <span class="sep">></span> <span>Blog</span></p>
@@ -118,7 +134,7 @@
         <div class="row">
         <div class="col-md-6 mb-5 mb-lg-4 col-lg-8" data-aos="fade">
             <div class="position-relative unit-8">
-            <a  class="mb-3 d-block img-a"><img src="{{details.image.url}}" height="400px" width="100%" alt="Blog image" class="rounded"></a>
+            <a  class="mb-3 d-block img-a"><img src="{{details.image.url}}" alt="Blog image" class="rounded"></a>
             <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a class="text-black">{{details.title|linebreaks}}</a></h2>
             <span class="d-block text-gray-500 text-normal small mb-3">By <a>{{details.author}}</a> <span class="mx-2">&bullet;</span> {{details.time}}</span>
             <p>{% autoescape off %}
@@ -127,7 +143,7 @@
             </div>
           </div>
 
-        <div class="col-md-6 mb-5 mb-lg-4 col-lg-4 d-none d-md-block" data-aos="fade">
+        <div class="col-md-6 mb-5 mb-lg-4 col-lg-4" data-aos="fade">
             <h2>Upcoming Events</h2>
           
           {% for event in events %}
@@ -149,7 +165,6 @@
               </div>
 
               <div class="ml-auto">
-                <a href="#" class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span></a>
                 <a href="job-single.html" class="btn btn-primary py-2">View</a>
               </div>
            </div>
@@ -163,7 +178,7 @@
         </div>
 
 
-        <div class="row mt-5">
+        <!-- <div class="row mt-5">
           <div class="col-md-12 text-center">
             <div class="site-block-27">
               <ul>
@@ -177,14 +192,57 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
 
 
       </div>
     </div>    
 
 
-    
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-start text-left mb-5">
+          <div class="col-md-9" data-aos="fade">
+            <h2 class="font-weight-bold text-black">Technology, Tricks and Hacks</h2>
+          </div>
+          
+        </div>
+        
+          <div class="row">
+          {% for post in technologies %}
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+              <div class="row mt-3">
+                <div class="col-8 col-sm-7 col-xs-7">
+                  <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="/blog/details/{{post.title}}" class="text-black">{{post.title | linebreaks}}</a></h2>
+                  <span class="d-block text-gray-500 text-normal small mb-3">By <a href="/blog/details/{{post.id}}">{{post.author}}</a> <span class="mx-2">&bullet;</span> {{post.time}}</span> 
+                </div>
+                <div class="col-4 col-sm-5 col-xs-5">
+                  <img src="{{post.image.url}}" alt="image" class="rounded" style="height: 70px; width: 70px">
+                </div>
+              </div>
+            </div>
+            <hr>
+          {% endfor %}
+          </div>
+        
+
+        <!-- <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <ul>
+                <li><a href="#"><i class="icon-keyboard_arrow_left h5"></i></a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#"><i class="icon-keyboard_arrow_right h5"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div> 
 
     
 
@@ -253,8 +311,8 @@
                 <h3 class="footer-heading mb-4">Company</h3>
                 <ul class="list-unstyled">
                   <li><a href="{% url 'about' %}">About</a></li>
-                  <li><a href="#">Team</a></li>
-                  <li><a href="#">Terms &amp; Policies</a></li>
+                  <li><a href="{% url 'about' %}">Team</a></li>
+                  <li><a href="{% url 'about' %}">Terms &amp; Policies</a></li>
                   <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
               </div>
@@ -276,6 +334,7 @@
                 <span class="d-block text-white">WhatsApp</span>
                   +234 813 161 5393
               </li>
+              <li><a href="https://facebook.com/InTouch-Media-and-Survey-104972581465970">Connect with us on facebook</a></li>
               <li>
                 <span class="d-block text-white">Email</span>
                 info@intouch.com

@@ -103,7 +103,7 @@
       
     </header>
 
-    <div class="unit-5 overlay" style="background-image: url({% static 'index/images/hero_bg_2.jpg' %});">
+    <div class="unit-5 overlay d-none d-lg-block d-md-block" style="background-image: url({% static 'index/images/hero_bg_2.jpg' %});">
       <div class="container text-center mt-5">
         <h2 class="mb-0">{{category.upper}}</h2>
         <p class="mb-0 unit-6"><a href="{% url 'blog' %}">Blog</a> <span class="sep" style="color: white">></span> <span>{{category}}</span></p>
@@ -123,7 +123,6 @@
             <a href="/blog/details/{{post.title}}" class="mb-3 d-block img-a"><img src="{{post.image.url}}" alt="Image" class="img-fluid rounded"></a>
             <span class="d-block text-gray-500 text-normal small mb-3">By <a href="/blog/details/{{post.title}}">{{post.author}}</a> <span class="mx-2">&bullet;</span> {{post.time}} <span class="mx-2">&bullet;</span> <a href="#">{{post.category}}</a></span>
             
-            <p>{{post.content|truncatechars:200|linebreaks}}</p>
             </div>
 
           </div>
@@ -223,8 +222,8 @@
                 <h3 class="footer-heading mb-4">Company</h3>
                 <ul class="list-unstyled">
                   <li><a href="{% url 'about' %}">About</a></li>
-                  <li><a href="#">Team</a></li>
-                  <li><a href="#">Terms &amp; Policies</a></li>
+                  <li><a href="{% url 'about' %}">Team</a></li>
+                  <li><a href="{% url 'about' %}">Terms &amp; Policies</a></li>
                   <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
               </div>
@@ -246,6 +245,7 @@
                 <span class="d-block text-white">WhatsApp</span>
                   +234 813 161 5393
               </li>
+              <li><a href="https://facebook.com/InTouch-Media-and-Survey-104972581465970">Connect with us on facebook</a></li>
               <li>
                 <span class="d-block text-white">Email</span>
                 info@intouch.com

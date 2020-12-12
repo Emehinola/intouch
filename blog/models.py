@@ -26,12 +26,12 @@ class Blog(models.Model):
     # author = models.ForeignKey(
     #     User, on_delete=models.CASCADE)
     author = models.CharField(max_length=50)
-    title = models.TextField()
+    title = models.CharField(max_length=500)
     content = models.TextField()
-    image = models.ImageField(upload_to='blog images',
-                              height_field=None)
+    image = models.ImageField(upload_to='blog images', default='logo.png')
     category = models.CharField(max_length=50, choices=category_list)
     approved = models.BooleanField(default=False)
+    add_to_trending = models.BooleanField(default=False)
     time = models.DateTimeField(auto_now=True)
 
     class Meta:

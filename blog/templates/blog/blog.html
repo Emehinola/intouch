@@ -132,7 +132,7 @@
         </div>
 
 
-        <div class="row mt-5">
+        <div class="row">
           <div class="col-md-12 text-center">
             <div class="site-block-27">
               <ul>
@@ -151,6 +151,45 @@
 
       </div>
     </div>    
+
+    <div class="site-section bg-light" style="position: relative; top: -100px">
+      <div class="container">
+        <div class="row justify-content-start text-left mb-5">
+          <div class="col-md-9" data-aos="fade">
+            <h2 class="font-weight-bold text-black">Trending posts</h2>
+          </div>
+          
+        </div>
+        
+          <div class="row">
+          {% for post in posts %}
+            <div class="col-lg-4 col-sm-12 col-xs-12">
+              <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="/blog/details/{{post.title}}" class="text-primary">{{post.title | linebreaks}}</a></h2>
+              <!-- <span class="d-block text-gray-500 text-normal small mb-3">By <a href="/blog/details/{{post.id}}">{{post.author}}</a> <span class="mx-2">&bullet;</span> {{post.time}}</span>  -->
+            </div>
+            <hr>
+          {% endfor %}
+          </div>
+        
+
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <!-- <ul>
+                <li><a href="#"><i class="icon-keyboard_arrow_left h5"></i></a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#"><i class="icon-keyboard_arrow_right h5"></i></a></li>
+              </ul> -->
+              <a href="{% url 'blog' %}">View all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
 
 
     
@@ -222,8 +261,8 @@
                 <h3 class="footer-heading mb-4">Company</h3>
                 <ul class="list-unstyled">
                   <li><a href="{% url 'about' %}">About</a></li>
-                  <li><a href="#">Team</a></li>
-                  <li><a href="#">Terms &amp; Policies</a></li>
+                  <li><a href="{% url 'about' %}">Team</a></li>
+                  <li><a href="{% url 'about' %}">Terms &amp; Policies</a></li>
                   <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
               </div>
@@ -245,6 +284,7 @@
                 <span class="d-block text-white">WhatsApp</span>
                   +234 813 161 5393
               </li>
+              <li><a href="https://facebook.com/InTouch-Media-and-Survey-104972581465970">Connect with us on facebook</a></li>
               <li>
                 <span class="d-block text-white">Email</span>
                 info@intouch.com
