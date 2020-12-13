@@ -32,6 +32,12 @@
         width: 100%;
       }
 
+      .content li{
+        margin-top: -70px;
+      }
+
+
+
       @media only screen and (max-width: 769px){
 
         .rounded{
@@ -74,26 +80,26 @@
                 <li class="has-children">
                   <a href="">Category</a>
                   <ul class="dropdown">
-                    <li><a href="blog/results">Survey results</a></li>
-                    <li><a href="blog/Fitness">Physical fitness</a></li>
-                    <li><a href="blog/Love">Love, Relationship and Mariage</a></li>
-                    <li><a href="blog/Foods">Foods and Health</a></li>
-                    <li><a href="blog/Technology">Technology and Hacks</a></li>
-                    <li><a href="blog/Career">Careers</a></li>
-                    <li><a href="blog/enterpreneur">Enterpreneur</a></li>
+                    <li><a href="/blog/results">Survey results</a></li>
+                    <li><a href="/blog/Fitness">Physical fitness</a></li>
+                    <li><a href="/blog/Love">Love, Relationship and Mariage</a></li>
+                    <li><a href="/blog/Foods">Foods and Health</a></li>
+                    <li><a href="/blog/Technology">Technology and Hacks</a></li>
+                    <li><a href="/blog/Career">Careers</a></li>
+                    <li><a href="/blog/enterpreneur">Enterpreneur</a></li>
                   </ul>
                 </li>
                 <li class="has-children">
                   <a class="active" href="{% url 'blog' %}">Blog</a>
                   <ul class="dropdown">
                     <li><a href="{% url 'blog' %}">All</a></li>
-                    <li><a href="blog/Education">Education</a></li>
-                    <li><a href="blog/Entertainment">Entertainment</a></li>
-                    <li><a href="blog/Sports">Sports</a></li>
-                    <li><a href="blog/Technology">Technology</a></li>
-                    <li><a href="blog/Religion">Religion</a></li>
-                    <li><a href="blog/Politics">Politics</a></li>
-                    <li><a href="blog/Gossips">Gossips</a></li>
+                    <li><a href="/blog/Education">Education</a></li>
+                    <li><a href="/blog/Entertainment">Entertainment</a></li>
+                    <li><a href="/blog/Sports">Sports</a></li>
+                    <li><a href="/blog/Technology">Technology</a></li>
+                    <li><a href="/blog/Religion">Religion</a></li>
+                    <li><a href="/blog/Politics">Politics</a></li>
+                    <li><a href="/blog/Gossips">Gossips</a></li>
                   </ul>
                 </li>
                 <li><a href="{% url 'about' %}">About</a></li>
@@ -101,9 +107,7 @@
                   <li><a href="{% url 'survey_topics' %}">Survey Topics</a></li>
                 {% endif %}
                 <li><a href="{% url 'contact' %}">Contact</a></li>
-                {% if user.is_superuser %}
-                  <li><a href="{% url 'create_post' %}"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> Create Post</span></a></li>
-                {% endif %}
+                <li><a href="{% url 'create_post' %}"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> Create Post</span></a></li>
               </ul>
             </nav>
           </div>
@@ -119,7 +123,7 @@
       
     </header>
 
-    <div class="unit-5 overlay d-none d-lg-block d-md-block" style="background-image: url({% static 'index/images/hero_bg_2.jpg' %});">
+    <div class="unit-5 overlay d-none d-lg-block d-md-block" style="background-image: url({% static 'index/images/m-blog-2.jpg' %});">
       <div class="container text-center mt-5">
         <h2 class="mb-0">{{details.title}}</h2>
         <p class="mb-0 unit-6"><a href="{% url 'home' %}">Home</a> <span class="sep">></span> <span>Blog</span></p>
@@ -137,7 +141,7 @@
             <a  class="mb-3 d-block img-a"><img src="{{details.image.url}}" alt="Blog image" class="rounded"></a>
             <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a class="text-black">{{details.title|linebreaks}}</a></h2>
             <span class="d-block text-gray-500 text-normal small mb-3">By <a>{{details.author}}</a> <span class="mx-2">&bullet;</span> {{details.time}}</span>
-            <p>{% autoescape off %}
+            <p class="content">{% autoescape off %}
               {{details.content|linebreaks}}
             {% endautoescape %}</p>
             </div>
@@ -201,7 +205,7 @@
 
     <div class="site-section bg-light">
       <div class="container">
-        <div class="row justify-content-start text-left mb-5">
+        <div class="row justify-content-start text-left">
           <div class="col-md-9" data-aos="fade">
             <h2 class="font-weight-bold text-black">Technology, Tricks and Hacks</h2>
           </div>
@@ -214,7 +218,7 @@
               <div class="row mt-3">
                 <div class="col-8 col-sm-7 col-xs-7">
                   <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="/blog/details/{{post.title}}" class="text-black">{{post.title | linebreaks}}</a></h2>
-                  <span class="d-block text-gray-500 text-normal small mb-3">By <a href="/blog/details/{{post.id}}">{{post.author}}</a> <span class="mx-2">&bullet;</span> {{post.time}}</span> 
+                  <span class="d-block text-gray-500 text-normal small mb-3">By <a href="/blog/details/{{post.title}}">{{post.author}}</a> <span class="mx-2">&bullet;</span> {{post.time}}</span> 
                 </div>
                 <div class="col-4 col-sm-5 col-xs-5">
                   <img src="{{post.image.url}}" alt="image" class="rounded" style="height: 70px; width: 70px">
@@ -276,24 +280,24 @@
               <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
                 <h3 class="footer-heading mb-4">Blog Category</h3>
                 <ul class="list-unstyled">
-                  <li><a href="blog/Education">Education</a></li>
-                  <li><a href="blog/Entertainment">Entertainment</a></li>
-                  <li><a href="blog/Business">Business</a></li>
-                  <li><a href="blog/Gossips">Gossips</a></li>
-                  <li><a href="blog/Technology">Technology</a></li>
-                  <li><a href="blog/Sports">Sports</a></li>
-                  <li><a href="blog/Religion">Religion</a></li>
-                  <li><a href="blog/Politics">Politics</a></li>
+                  <li><a href="/blog/Education">Education</a></li>
+                  <li><a href="/blog/Entertainment">Entertainment</a></li>
+                  <li><a href="/blog/Business">Business</a></li>
+                  <li><a href="/blog/Gossips">Gossips</a></li>
+                  <li><a href="/blog/Technology">Technology</a></li>
+                  <li><a href="/blog/Sports">Sports</a></li>
+                  <li><a href="/blog/Religion">Religion</a></li>
+                  <li><a href="/blog/Politics">Politics</a></li>
                 </ul>
               </div>
               <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
                 <h3 class="footer-heading mb-4">Training and  others</h3>
                 <ul class="list-unstyled">
-                  <li><a href="blog/Foods">Foods and Nutrient</a></li>
-                  <li><a href="blog/Health">Health</a></li>
-                  <li><a href="blog/Fitness">Fitness</a></li>
-                  <li><a href="blog/Love">Love &amp; Relationship</a></li>
-                  <li><a href="blog/Career">Careers guide</a></li>
+                  <li><a href="/blog/Foods">Foods and Nutrient</a></li>
+                  <li><a href="/blog/Health">Health</a></li>
+                  <li><a href="/blog/Fitness">Fitness</a></li>
+                  <li><a href="/blog/Love">Love &amp; Relationship</a></li>
+                  <li><a href="/blog/Career">Careers guide</a></li>
                 </ul>
               </div>
               <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">

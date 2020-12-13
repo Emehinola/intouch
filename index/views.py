@@ -3,6 +3,7 @@ from blog.models import Blog
 from events.models import Event, Vacancy, FormControl, GiveAway
 from events.forms import *
 from .models import HomeViewCount
+from django.contrib import messages
 
 # Create your views here.
 
@@ -39,7 +40,7 @@ def home(request):
     formControl = FormControl.objects.all()
     for field in formControl:
         question = field.question
-    posts = Blog.objects.filter(approved=True)[:5]
+    posts = Blog.objects.filter(approved=True)[:20]
     events = Event.objects.all()
     vacancies = Vacancy.objects.all()
 
@@ -49,6 +50,8 @@ def home(request):
                 forms = form[0]
         if forms.is_valid():
             forms.save()
+            messages.success(
+                request, f'Your response is submitted successfully. Thanks')
             # forms = MostConsumedFoodForm()
             return redirect('home')
 

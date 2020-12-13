@@ -4,6 +4,7 @@ from events.models import Event
 from events.forms import *
 from . forms import PostForm
 from django.http import Http404, HttpResponseNotFound
+from django.contrib import messages
 
 # Create your views here.
 
@@ -70,7 +71,9 @@ def create_post(request):
         form = PostForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             form.save()
-            return redirect('blog')
+            messages.success(
+                request, f'Your post has been created successfully. It will be approved by the the admin shortly. Thanks')
+            return redirect('create_post')
         else:
             pass
     else:

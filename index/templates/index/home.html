@@ -39,6 +39,9 @@
           position: relative;
           top: 200px
         }
+        .tech{
+          margin-top: 160px;
+        }
       }
     </style>
     
@@ -74,26 +77,26 @@
                 <li class="has-children">
                   <a href="">Category</a>
                   <ul class="dropdown">
-                    <li><a href="blog/results">Survey results</a></li>
-                    <li><a href="blog/Fitness">Physical fitness</a></li>
-                    <li><a href="blog/Love">Love, Relationship and Mariage</a></li>
-                    <li><a href="blog/Foods">Foods and Health</a></li>
-                    <li><a href="blog/Technology">Technology and Hacks</a></li>
-                    <li><a href="blog/Career">Careers</a></li>
-                    <li><a href="blog/enterpreneur">Enterpreneur</a></li>
+                    <li><a href="/blog/results">Survey results</a></li>
+                    <li><a href="/blog/Fitness">Physical fitness</a></li>
+                    <li><a href="/blog/Love">Love, Relationship and Mariage</a></li>
+                    <li><a href="/blog/Foods">Foods and Health</a></li>
+                    <li><a href="/blog/Technology">Technology and Hacks</a></li>
+                    <li><a href="/blog/Career">Careers</a></li>
+                    <li><a href="/blog/enterpreneur">Enterpreneur</a></li>
                   </ul>
                 </li>
                 <li class="has-children">
                   <a href="{% url 'blog' %}">Blog</a>
                   <ul class="dropdown">
                     <li><a href="{% url 'blog' %}">All</a></li>
-                    <li><a href="blog/Education">Education</a></li>
-                    <li><a href="blog/Entertainment">Entertainment</a></li>
-                    <li><a href="blog/Sports">Sports</a></li>
-                    <li><a href="blog/Technology">Technology</a></li>
-                    <li><a href="blog/Religion">Religion</a></li>
-                    <li><a href="blog/Politics">Politics</a></li>
-                    <li><a href="blog/Gossips">Gossips</a></li>
+                    <li><a href="/blog/Education">Education</a></li>
+                    <li><a href="/blog/Entertainment">Entertainment</a></li>
+                    <li><a href="/blog/Sports">Sports</a></li>
+                    <li><a href="/blog/Technology">Technology</a></li>
+                    <li><a href="/blog/Religion">Religion</a></li>
+                    <li><a href="/blog/Politics">Politics</a></li>
+                    <li><a href="/blog/Gossips">Gossips</a></li>
                   </ul>
                 </li>
                 <li><a href="{% url 'about' %}">About</a></li>
@@ -102,9 +105,7 @@
                   <li><a href="/admin">Admin</a></li>
                 {% endif %}
                 <li><a href="{% url 'contact' %}">Contact</a></li>
-                {% if user.is_superuser %}
-                  <li><a href="create_post"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> Create Post</span></a></li>
-                {% endif %}
+                <li><a href="{% url 'create_post' %}"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> Create Post</span></a></li>
               </ul>
             </nav>
           </div>
@@ -134,6 +135,15 @@
                   <a class="nav-link py-3" id="pills-candidate-tab" data-toggle="pill" href="#pills-candidate" role="tab" aria-controls="pills-candidate" aria-selected="false">Giveaway</a>
                 </li>
               </ul>
+              {% if messages %}
+              <ul class="text-center bg-success text-white" style="border-radius: 5px">
+                {% for message in messages %}
+                  {% if message %}
+                    <li style="list-style-type: none">{{ message }}</li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
               <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
                   <form action="" method="POST">
@@ -253,7 +263,7 @@
             <div class="position-relative unit-8">
               <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="/blog/details/{{post.title}}" class="text-black">{{post.title | linebreaks}}</a></h2>
             <a href="/blog/details/{{post.title}}" class="mb-3 d-block img-a"><img src="{{post.image.url}}" style="height: 200px; width: 100%" alt="Image" class="img-fluid rounded" height="500px"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">By <a href="/blog/details/{{post.id}}">{{post.author}}</a> <span class="mx-2">&bullet;</span> {{post.time}} <span class="mx-2">&bullet;</span> <a href="#">{{post.category}}</a> </span> 
+            <span class="d-block text-gray-500 text-normal small mb-3">By <a href="/blog/details/{{post.title}}">{{post.author}}</a> <span class="mx-2">&bullet;</span> {{post.time}} <span class="mx-2">&bullet;</span> <a href="#">{{post.category}}</a> </span> 
             
             </div>
           </div>
@@ -264,13 +274,14 @@
           {% endif %}
           <hr class="d-lg-none">
         {% endfor %}
-
+            
         </div>
+        <a href="{% url 'blog' %}" class="btn btn-primary">View all posts</a>
       </div>
     </div>
 
 
-    <div class="site-section bg-light" style="position: relative">
+    <div class="site-section bg-light tech" style="position: relative">
       <div class="container">
         <div class="row justify-content-start text-left mb-5">
           <div class="col-md-9" data-aos="fade">
@@ -281,7 +292,7 @@
         
           <div class="row">
           {% for post in technologies %}
-            <div class="col-lg-6 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-sm-12 col-xs-12 card">
               <div class="row mt-3">
                 <div class="col-8 col-sm-7 col-xs-7">
                   <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="/blog/details/{{post.title}}" class="text-black">{{post.title | linebreaks}}</a></h2>
@@ -448,7 +459,7 @@
           <div class="row">
           {% for post in posts %}
             <div class="col-lg-4 col-sm-12 col-xs-12">
-              <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="/blog/details/{{post.title}}" class="text-primary">{{post.title | linebreaks}}</a></h2>
+              <h2 class="card text-center" style="font-size: 15px;"><a href="/blog/details/{{post.title}}" class="text-primary">{{post.title | linebreaks}}</a></h2>
               <!-- <span class="d-block text-gray-500 text-normal small mb-3">By <a href="/blog/details/{{post.id}}">{{post.author}}</a> <span class="mx-2">&bullet;</span> {{post.time}}</span>  -->
             </div>
             <hr>
